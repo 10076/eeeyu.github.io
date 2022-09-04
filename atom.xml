@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://eeeyu.github.io/</id>
+    <title>eeeyu</title>
+    <updated>2022-09-04T12:14:16.238Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://eeeyu.github.io/"/>
+    <link rel="self" href="https://eeeyu.github.io/atom.xml"/>
+    <subtitle>昨夜星辰昨夜风，画楼西畔桂堂东</subtitle>
+    <logo>https://eeeyu.github.io/images/avatar.png</logo>
+    <icon>https://eeeyu.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2022, eeeyu</rights>
+    <entry>
+        <title type="html"><![CDATA[一点点JavaScript基础]]></title>
+        <id>https://eeeyu.github.io/post/yi-dian-dian-javascript-ji-chu/</id>
+        <link href="https://eeeyu.github.io/post/yi-dian-dian-javascript-ji-chu/">
+        </link>
+        <updated>2022-09-04T10:45:13.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="es6新特性">ES6新特性</h1>
+<h2 id="变量声明">变量声明</h2>
+<ol>
+<li>
+<p><code>var</code> 变量可以重复声明,且拥有全局作用域</p>
+<ul>
+<li>
+<p>重复声明</p>
+<pre><code class="language-js">var name =&quot;张三&quot;; 
+var name =&quot;李四&quot;;
+console.log(name);
+//&gt;&gt;&gt;输出&quot;李四&quot;
+//重复声明即为赋值
+</code></pre>
+</li>
+<li>
+<p>全局作用域</p>
+<pre><code class="language-js">{
+    var name=&quot;张三&quot;
+}
+console.log(name);
+//&gt;&gt;&gt;输出&quot;张三&quot;
+</code></pre>
+</li>
+<li>
+<p>变量提升</p>
+<pre><code class="language-js">console.log(name);
+var name=&quot;张三&quot;;
+// 可以在声明前进行调用
+//&gt;&gt;&gt;输出undefined
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><code>let</code> 声明的变量为块级作用域, 不影响变量的作用域链,即在当前作用域声明的变量,可在子作用域内使用,而无法在父级作用域中使用.<br>
+变量无法重复声明.应尽量let声明变量</p>
+<ul>
+<li>
+<p>变量不能重复声明</p>
+<pre><code class="language-js">let name =&quot;张三&quot;; 
+let name =&quot;李四&quot;;
+//错误
+</code></pre>
+</li>
+<li>
+<p>块级作用域</p>
+<pre><code class="language-js">if (true) {
+    let name=&quot;张三&quot;
+}
+console.log(name);
+//错误
+</code></pre>
+</li>
+<li>
+<p>无变量提升</p>
+<pre><code class="language-js">console.log(name);
+let name=&quot;张三&quot;;
+//报错
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><code>const</code> 声明一个常量,声明后无法修改,一边常量使用全大写,方便理解</p>
+<ul>
+<li>
+<p>值不能修改</p>
+<pre><code class="language-js">const NAME = &quot;张三&quot;;
+console.log(&quot;张三&quot;);
+NAME = &quot;李四&quot;;
+//错误
+</code></pre>
+</li>
+<li>
+<p>必须赋初始值</p>
+<pre><code class="language-js">const NAME;
+//错误
+const NAME = &quot;张三&quot;;
+//正确
+</code></pre>
+</li>
+<li>
+<p>块级作用域</p>
+<pre><code class="language-js">if (true) {
+    const NAME=&quot;张三&quot;
+}
+console.log(NAME);
+//错误
+</code></pre>
+</li>
+<li>
+<p>对数组和对象的修改,不算为对常量的修改</p>
+<pre><code class="language-js">const NAME = [&quot;张三&quot;, &quot;李四&quot;, &quot;王五&quot;];
+NAME.push(&quot;赵六&quot;);
+console.log(NAME);
+//正确
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="解构赋值">解构赋值</h2>
+<ol>
+<li>
+<p>数组的解构赋值</p>
+<pre><code class="language-js">const NAME = [&quot;张三&quot;, &quot;李四&quot;, &quot;王五&quot;, &quot;赵六&quot;];
+let [n1, n2, n3, n4] = NAME;
+console.log(n1, n2, n3, n4);
+// &gt;&gt;&gt;张三 李四 王五 赵六
+</code></pre>
+</li>
+<li>
+<p>对象的解构</p>
+<pre><code class="language-js">const person = {
+name: &quot;张三&quot;,
+age: 18,
+say: function () {
+    console.log(&quot;昨夜星辰昨夜风,画楼西畔桂堂东&quot;);
+    },
+};
+let { name, age, say } = person;
+console.log(name, age, say);
+say();
+//&gt;&gt;&gt;昨夜星辰昨夜风,画楼西畔桂堂东
+let {say} =person;
+say()
+//&gt;&gt;&gt;昨夜星辰昨夜风,画楼西畔桂堂东
+</code></pre>
+</li>
+</ol>
+<h2 id="模板字符串">模板字符串</h2>
+<ol>
+<li>
+<p>声明模板字符串,使用反引号&quot;`&quot;</p>
+<pre><code class="language-js">let str = `这是一个模板字符串`
+</code></pre>
+<ul>
+<li>
+<p>可以出现换行符</p>
+<pre><code class="language-js">let str = `这
+是一个
+模板字
+符串`
+//可以直接出现换行符
+</code></pre>
+</li>
+<li>
+<p>可以直接进行变量的拼接</p>
+<pre><code class="language-js">let name =&quot;张三&quot;;
+let str = `我是${name}`
+//&gt;&gt;&gt;我是张三
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="箭头函数">箭头函数=&gt;</h2>
+<ul>
+<li>
+<p>声明箭头函数<br>
+1.普通箭头函数</p>
+<pre><code class="language-js">let func = (a, b) =&gt; {
+return a + b;
+};
+console.log(func(1, 2));
+// &gt;&gt;&gt;3
+</code></pre>
+<p>2.简写箭头函数<br>
+当函数只有一个参数时可以省略小括号</p>
+<pre><code class="language-js">let func = a =&gt; {
+return a * a;
+};
+console.log(func(7));
+// &gt;&gt;&gt;3
+</code></pre>
+<p>3.简写箭头函数<br>
+当函数只有一条语句时可以省略大括号,此时必须省略return</p>
+<pre><code class="language-js">let func = a =&gt; a * a;
+console.log(func(7));
+// &gt;&gt;&gt;3
+</code></pre>
+</li>
+<li>
+<p>箭头函数注意事项</p>
+<ol>
+<li>箭头函数的this是静态的</li>
+<li>箭头函数不能作为对象的构造器</li>
+<li>不能使用arguments变量</li>
+</ol>
+</li>
+<li>
+<p>箭头函数的实践以及应用场景</p>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[test]]></title>
+        <id>https://eeeyu.github.io/post/test/</id>
+        <link href="https://eeeyu.github.io/post/test/">
+        </link>
+        <updated>2022-09-03T18:37:03.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="测试文章">测试文章</h1>
+<ul>
+<li>123</li>
+<li>456</li>
+<li>789</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello Gridea]]></title>
+        <id>https://eeeyu.github.io/post/hello-gridea/</id>
+        <link href="https://eeeyu.github.io/post/hello-gridea/">
+        </link>
+        <updated>2018-12-11T16:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+<!-- more -->
+<p><a href="https://github.com/getgridea/gridea">Github</a><br>
+<a href="https://gridea.dev/">Gridea 主页</a><br>
+<a href="https://fehey.com/">示例网站</a></p>
+<h2 id="特性">特性👇</h2>
+<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
+<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
+<p>🏷️  你可以对文章进行标签分组</p>
+<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
+<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
+<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
+<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
+<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
+<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
+<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
+<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
+<p>未来，它一定会成为你离不开的伙伴</p>
+<p>尽情发挥你的才华吧！</p>
+<p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+</feed>

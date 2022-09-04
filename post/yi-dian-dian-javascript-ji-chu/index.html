@@ -1,0 +1,386 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>一点点JavaScript基础 | eeeyu</title>
+<link rel="shortcut icon" href="https://eeeyu.github.io//favicon.ico?v=1662293651647">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://eeeyu.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="一点点JavaScript基础 | eeeyu - Atom Feed" href="https://eeeyu.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="ES6新特性
+变量声明
+
+
+var 变量可以重复声明,且拥有全局作用域
+
+
+重复声明
+var name =&quot;张三&quot;; 
+var name =&quot;李四&quot;;
+console.log(name);
+//&gt..." />
+    <meta name="keywords" content="JavaScript" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://eeeyu.github.io/">
+  <img class="avatar" src="https://eeeyu.github.io//images/avatar.png?v=1662293651647" alt="">
+  </a>
+  <h1 class="site-title">
+    eeeyu
+  </h1>
+  <p class="site-description">
+    昨夜星辰昨夜风，画楼西畔桂堂东
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              一点点JavaScript基础
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-09-04
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://eeeyu.github.io/tag/1K4V_1XiV/" class="post-tag">
+                  # JavaScript
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://eeeyu.github.io//post-images/yi-dian-dian-javascript-ji-chu.JPG" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="es6新特性">ES6新特性</h1>
+<h2 id="变量声明">变量声明</h2>
+<ol>
+<li>
+<p><code>var</code> 变量可以重复声明,且拥有全局作用域</p>
+<ul>
+<li>
+<p>重复声明</p>
+<pre><code class="language-js">var name =&quot;张三&quot;; 
+var name =&quot;李四&quot;;
+console.log(name);
+//&gt;&gt;&gt;输出&quot;李四&quot;
+//重复声明即为赋值
+</code></pre>
+</li>
+<li>
+<p>全局作用域</p>
+<pre><code class="language-js">{
+    var name=&quot;张三&quot;
+}
+console.log(name);
+//&gt;&gt;&gt;输出&quot;张三&quot;
+</code></pre>
+</li>
+<li>
+<p>变量提升</p>
+<pre><code class="language-js">console.log(name);
+var name=&quot;张三&quot;;
+// 可以在声明前进行调用
+//&gt;&gt;&gt;输出undefined
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><code>let</code> 声明的变量为块级作用域, 不影响变量的作用域链,即在当前作用域声明的变量,可在子作用域内使用,而无法在父级作用域中使用.<br>
+变量无法重复声明.应尽量let声明变量</p>
+<ul>
+<li>
+<p>变量不能重复声明</p>
+<pre><code class="language-js">let name =&quot;张三&quot;; 
+let name =&quot;李四&quot;;
+//错误
+</code></pre>
+</li>
+<li>
+<p>块级作用域</p>
+<pre><code class="language-js">if (true) {
+    let name=&quot;张三&quot;
+}
+console.log(name);
+//错误
+</code></pre>
+</li>
+<li>
+<p>无变量提升</p>
+<pre><code class="language-js">console.log(name);
+let name=&quot;张三&quot;;
+//报错
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><code>const</code> 声明一个常量,声明后无法修改,一边常量使用全大写,方便理解</p>
+<ul>
+<li>
+<p>值不能修改</p>
+<pre><code class="language-js">const NAME = &quot;张三&quot;;
+console.log(&quot;张三&quot;);
+NAME = &quot;李四&quot;;
+//错误
+</code></pre>
+</li>
+<li>
+<p>必须赋初始值</p>
+<pre><code class="language-js">const NAME;
+//错误
+const NAME = &quot;张三&quot;;
+//正确
+</code></pre>
+</li>
+<li>
+<p>块级作用域</p>
+<pre><code class="language-js">if (true) {
+    const NAME=&quot;张三&quot;
+}
+console.log(NAME);
+//错误
+</code></pre>
+</li>
+<li>
+<p>对数组和对象的修改,不算为对常量的修改</p>
+<pre><code class="language-js">const NAME = [&quot;张三&quot;, &quot;李四&quot;, &quot;王五&quot;];
+NAME.push(&quot;赵六&quot;);
+console.log(NAME);
+//正确
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="解构赋值">解构赋值</h2>
+<ol>
+<li>
+<p>数组的解构赋值</p>
+<pre><code class="language-js">const NAME = [&quot;张三&quot;, &quot;李四&quot;, &quot;王五&quot;, &quot;赵六&quot;];
+let [n1, n2, n3, n4] = NAME;
+console.log(n1, n2, n3, n4);
+// &gt;&gt;&gt;张三 李四 王五 赵六
+</code></pre>
+</li>
+<li>
+<p>对象的解构</p>
+<pre><code class="language-js">const person = {
+name: &quot;张三&quot;,
+age: 18,
+say: function () {
+    console.log(&quot;昨夜星辰昨夜风,画楼西畔桂堂东&quot;);
+    },
+};
+let { name, age, say } = person;
+console.log(name, age, say);
+say();
+//&gt;&gt;&gt;昨夜星辰昨夜风,画楼西畔桂堂东
+let {say} =person;
+say()
+//&gt;&gt;&gt;昨夜星辰昨夜风,画楼西畔桂堂东
+</code></pre>
+</li>
+</ol>
+<h2 id="模板字符串">模板字符串</h2>
+<ol>
+<li>
+<p>声明模板字符串,使用反引号&quot;`&quot;</p>
+<pre><code class="language-js">let str = `这是一个模板字符串`
+</code></pre>
+<ul>
+<li>
+<p>可以出现换行符</p>
+<pre><code class="language-js">let str = `这
+是一个
+模板字
+符串`
+//可以直接出现换行符
+</code></pre>
+</li>
+<li>
+<p>可以直接进行变量的拼接</p>
+<pre><code class="language-js">let name =&quot;张三&quot;;
+let str = `我是${name}`
+//&gt;&gt;&gt;我是张三
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="箭头函数">箭头函数=&gt;</h2>
+<ul>
+<li>
+<p>声明箭头函数<br>
+1.普通箭头函数</p>
+<pre><code class="language-js">let func = (a, b) =&gt; {
+return a + b;
+};
+console.log(func(1, 2));
+// &gt;&gt;&gt;3
+</code></pre>
+<p>2.简写箭头函数<br>
+当函数只有一个参数时可以省略小括号</p>
+<pre><code class="language-js">let func = a =&gt; {
+return a * a;
+};
+console.log(func(7));
+// &gt;&gt;&gt;3
+</code></pre>
+<p>3.简写箭头函数<br>
+当函数只有一条语句时可以省略大括号,此时必须省略return</p>
+<pre><code class="language-js">let func = a =&gt; a * a;
+console.log(func(7));
+// &gt;&gt;&gt;3
+</code></pre>
+</li>
+<li>
+<p>箭头函数注意事项</p>
+<ol>
+<li>箭头函数的this是静态的</li>
+<li>箭头函数不能作为对象的构造器</li>
+<li>不能使用arguments变量</li>
+</ol>
+</li>
+<li>
+<p>箭头函数的实践以及应用场景</p>
+</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#es6%E6%96%B0%E7%89%B9%E6%80%A7">ES6新特性</a>
+<ul>
+<li><a href="#%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E">变量声明</a></li>
+<li><a href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC">解构赋值</a></li>
+<li><a href="#%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2">模板字符串</a></li>
+<li><a href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">箭头函数=&gt;</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://eeeyu.github.io/post/test/">
+              <h3 class="post-title">
+                test
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://eeeyu.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
